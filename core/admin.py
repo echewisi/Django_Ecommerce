@@ -8,13 +8,14 @@ from .models import Cart, Item, OrderedItem
 # @admin.register(OrderedItem)
 class OrderedItemAdmin(admin.TabularInline):
     model= OrderedItem
-    fields=[
-        'item'
-    ]
+    # fields=[
+    #     'item'
+    # ]
     
 
+@admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display=[
+    fields=[
         'title',
         'price',
     ]
@@ -24,15 +25,16 @@ class ItemAdmin(admin.ModelAdmin):
     ]
 
 
-admin.site.register(Cart)
-# class CartAdmin(admin.ModelAdmin):
-#     list_display=[
-#         'user',
-#         'items',
-#         'ordered',
-#         'placement_time',
-#         'order_time',
-#     ]
+# admin.site.register(Cart)
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    fields=[
+        'user',
+        'items',
+        'ordered',
+        'placement_time',
+        'order_time',
+    ]
     
 
 # Register your models here.
